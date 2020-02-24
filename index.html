@@ -54,7 +54,8 @@
         <main class="flex-grow-1">
             <div class="container py-3">
                 <h3 class="font-weight-bold mb-3">{{ locpage }}</h3>
-                <table class="table table-hover table-responsive" :class="{'table-dark' : isDark, 'table-light' : !isDark}">
+                <table class="table table-hover table-responsive"
+                       :class="{'table-dark' : isDark, 'table-light' : !isDark}">
                     <thead :class="{'thead-light' : !isDark, 'thead-dark' : isDark}">
                     <tr>
                         <th style="width: 20%;">Отправитель</th>
@@ -632,8 +633,11 @@
         mounted() {
             if (localStorage.getItem('isDark'))
                 this.isDark = localStorage.getItem('isDark') === 'true';
+            if (localStorage.getItem('folder'))
+                this.page = localStorage.getItem('folder');
+            else
+                this.page = 'inbox';
             this.mail = msgs;
-            this.page = 'inbox';
             this.modal = $('#mailModal');
             this.modal.on('hide.bs.modal', () => this.selmail = null);
         },
@@ -660,6 +664,7 @@
                         break;
                 }
                 this.pageload = this.mail.filter(m => m.folder === val);
+                localStorage.setItem('folder', val);
             },
             selmail(val) {
                 if (val === null) {
