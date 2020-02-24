@@ -28,6 +28,8 @@ a.nav-link {
 }
 
 .navbar-brand {
+    display: inline-block;
+    width: 100%;
     font-size: 2rem;
     font-weight: 700;
 }
@@ -96,5 +98,16 @@ td.vanish-light:before {
 
     .newmsg-button.bg-dark {
         border-right: none;
+    }
+
+    .navbar-mobile {
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        display: none;
     }
 }
