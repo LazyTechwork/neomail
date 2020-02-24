@@ -3,3 +3,7 @@
 * {
     font-family: 'Fira Sans', sans-serif;
 }
+
+.bg-dark, .bg-light, .thead-dark, .thead-light, .table-dark, .text-white, .table-light {
+    transition: .25s background-color, color;
+}
