@@ -19,7 +19,7 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+            <button class="newmsg-btn">Написать</button>
             <div class="collapse navbar-collapse flex-column align-items-start" id="navbarSupportedContent">
                 <ul class="navbar-nav flex-column">
                     <li class="nav-item" :class="{'active' : page === 'inbox'}" @click="page = 'inbox'">
@@ -38,15 +38,11 @@
                         <a class="nav-link" href="#">Корзина</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav flex-column">
-                    <li>
-                        <div class="custom-control custom-switch text-white">
-                            <input type="checkbox" class="custom-control-input" id="darkThemeSwitch" v-model="isDark">
-                            <label class="custom-control-label" style="user-select: none;" for="darkThemeSwitch">Переключить
-                                тему оформления</label>
-                        </div>
-                    </li>
-                </ul>
+                <div class="custom-control custom-switch text-white mt-3">
+                    <input type="checkbox" class="custom-control-input" id="darkThemeSwitch" v-model="isDark">
+                    <label class="custom-control-label" style="user-select: none;" for="darkThemeSwitch">Переключить
+                        тему оформления</label>
+                </div>
             </div>
         </div>
     </nav>
@@ -61,7 +57,7 @@
                         <td style="width: 20%;">
                             <div class="mailIcon" :style="randomBg()">{{ m.sender.substring(0,1) }}</div>
                             <b>{{ m.sender }}</b></td>
-                        <td><span class="font-weight-bold">{{ m.title }}</span><br><span class="text-secondary">{{ m.message }}</span>
+                        <td :class="{'vanish-dark' : isDark, 'vanish-light' : !isDark}"><span class="font-weight-bold">{{ m.title }}</span><br><span class="text-secondary">{{ m.message }}</span>
                         </td>
                     </tr>
                     </tbody>
@@ -676,7 +672,7 @@
                     backgroundColor: '#' + (Math.random() * 0xFFFFFF << 0).toString(16),
                     color: '#ffffff'
                 };
-            }
+            },
         }
     });
 </script>

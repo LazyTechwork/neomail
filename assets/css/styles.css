@@ -40,7 +40,37 @@ table {
 td {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: clip;
+    position: relative;
+}
+
+.newmsg-btn {
+    width: 100%;
+    padding: 10px;
+    background: #ffffff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1em 0;
+    text-align: center;
+}
+
+td:last-child:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    content: '';
+}
+
+td.vanish-dark:before {
+    background: linear-gradient(90deg, transparent, var(--dark));
+}
+
+td.vanish-light:before {
+    background: linear-gradient(90deg, transparent, var(--light));
 }
 
 .mailIcon {
