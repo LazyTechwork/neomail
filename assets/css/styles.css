@@ -7,3 +7,19 @@
 .bg-dark, .bg-light, .thead-dark, .thead-light, .table-dark, .text-white, .table-light {
     transition: .25s background-color, color;
 }
+
+.newmsg-button {
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    padding: 5px 10px;
+    color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 5px 5px 0 0;
+}
+
+.newmsg-button.bg-dark {
+    border: 1px solid #ffffff;
+    border-bottom: none;
+}
