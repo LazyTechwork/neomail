@@ -63,7 +63,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="m in pageload" :key="m.id">
+                <tr v-for="m in pageload" :key="m.id" style="cursor: pointer;" @click="selmail = m">
                     <td><b>{{ m.sender }}</b></td>
                     <td>{{ m.title }}</td>
                     <td>{{ m.message.substring(0, 56) }}</td>
@@ -72,6 +72,27 @@
             </table>
         </div>
     </main>
+
+    <div class="modal fade hide" id="mailModal" tabindex="-1" role="dialog"
+         aria-labelledby="mailTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" v-if="selmail !== null">
+
+                <div class="modal-body">
+                    <h4>{{ selmail.title }}</h4>
+                    <p>Отправитель: <b>{{ selmail.sender }}</b></p>
+                    <hr>
+                    <p class="font-weight-bold">Сообщение:</p>
+                    <p>{{ selmail.message }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" @click="modal.modal('hide'); selmail = null">Закрыть
+                        сообщение
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -597,12 +618,16 @@
             page: '',
             locpage: '',
             pageload: null,
+            selmail: null,
+            modal: null,
         },
         mounted() {
             if (localStorage.getItem('isDark'))
                 this.isDark = localStorage.getItem('isDark') === 'true';
             this.mail = msgs;
             this.page = 'inbox';
+            this.modal = $('#mailModal');
+            this.modal.on('hide.bs.modal', () => this.selmail = null);
         },
         watch: {
             isDark(val) {
@@ -627,6 +652,13 @@
                         break;
                 }
                 this.pageload = this.mail.filter(m => m.folder === val);
+            },
+            selmail(val) {
+                if (val === null) {
+                    this.modal.modal('hide');
+                    return;
+                }
+                this.modal.modal('show');
             }
         }
     });
