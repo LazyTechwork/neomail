@@ -4,6 +4,16 @@
     font-family: 'Fira Sans', sans-serif;
 }
 
+body::-webkit-scrollbar {
+    width: 0.5em;
+    background: #ffffff;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgray;
+    outline: 1px solid slategrey;
+}
+
 .bg-dark, .bg-light, .thead-dark, .thead-light, .table-dark, .text-white, .table-light {
     transition: .25s background-color, color;
 }

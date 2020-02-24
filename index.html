@@ -104,13 +104,17 @@
                 <div class="modal-body">
                     <form action="#" method="POST">
                         <label for="newmail-to">Кому</label>
-                        <input type="text" class="form-control" :class="{'bg-dark text-white' : isDark}" placeholder="Введите адреса через точку с запятой" id="newmail-to"><br>
+                        <input type="text" class="form-control" :class="{'bg-dark text-white' : isDark}"
+                               placeholder="Введите адреса через точку с запятой" id="newmail-to"><br>
                         <label for="newmail-copy">Скрытая копия</label>
-                        <input type="text" class="form-control" :class="{'bg-dark text-white' : isDark}" placeholder="Введите адреса через точку с запятой" id="newmail-copy"><br>
+                        <input type="text" class="form-control" :class="{'bg-dark text-white' : isDark}"
+                               placeholder="Введите адреса через точку с запятой" id="newmail-copy"><br>
                         <label for="newmail-title">Заголовок</label>
-                        <input type="text" class="form-control" :class="{'bg-dark text-white' : isDark}" placeholder="Введите заголовок письма" id="newmail-title"><br>
+                        <input type="text" class="form-control" :class="{'bg-dark text-white' : isDark}"
+                               placeholder="Введите заголовок письма" id="newmail-title"><br>
                         <label for="newmail-msg">Сообщение</label>
-                        <textarea id="newmail-msg" class="form-control" :class="{'bg-dark text-white' : isDark}" rows="10"></textarea><br>
+                        <textarea id="newmail-msg" class="form-control" :class="{'bg-dark text-white' : isDark}"
+                                  rows="10"></textarea><br>
                     </form>
                 </div>
                 <div class="modal-footer border-0">
@@ -666,6 +670,12 @@
         watch: {
             isDark(val) {
                 localStorage.setItem('isDark', val);
+                let body = document.getElementsByTagName('body')[0];
+                body.classList.remove('bg-dark', 'bg-light');
+                if (val)
+                    body.classList.add('bg-dark');
+                else
+                    body.classList.add('bg-light');
             },
             page(val) {
                 switch (val) {
