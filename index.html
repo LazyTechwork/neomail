@@ -76,11 +76,11 @@
          aria-labelledby="mailTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content" v-if="selmail !== null" :class="{'bg-dark' : isDark}">
-
-                <div class="modal-body">
+                <div class="modal-header flex-column">
                     <h4>{{ selmail.title }}</h4>
-                    <p>Отправитель: <b>{{ selmail.sender }}</b></p>
-                    <hr>
+                    <p class="mb-0">Отправитель: <b>{{ selmail.sender }}</b></p>
+                </div>
+                <div class="modal-body">
                     <p class="font-weight-bold">Сообщение:</p>
                     <p>{{ selmail.message }}</p>
                 </div>

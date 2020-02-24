@@ -4,12 +4,12 @@
     font-family: 'Fira Sans', sans-serif;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 0.5em;
     background: #ffffff;
 }
 
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: darkgray;
     outline: 1px solid slategrey;
 }
