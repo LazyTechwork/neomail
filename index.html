@@ -51,10 +51,10 @@
         </div>
     </nav>
     <div class="d-flex flex-column flex-grow-1" style="min-height: 100%;">
-        <main class="flex-grow-1">
+        <main class="flex-grow-1 mw-100">
             <div class="container-fluid mt-4 mb-3">
                 <h3 class="font-weight-bold mb-3">{{ locpage }}</h3>
-                <table class="table table-hover table-responsive"
+                <table class="table table-hover mw-100"
                        :class="{'table-dark' : isDark, 'table-light' : !isDark}">
                     <thead :class="{'thead-light' : !isDark, 'thead-dark' : isDark}">
                     <tr>
@@ -67,7 +67,7 @@
                     <tr v-for="m in pageload" :key="m.id" style="cursor: pointer;" @click="selmail = m">
                         <td><b>{{ m.sender }}</b></td>
                         <td>{{ m.title }}</td>
-                        <td>{{ m.message.substring(0, 56) }}</td>
+                        <td>{{ m.message }}</td>
                     </tr>
                     </tbody>
                 </table>
