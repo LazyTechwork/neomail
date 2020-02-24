@@ -44,18 +44,6 @@ td {
     position: relative;
 }
 
-.newmsg-btn {
-    width: 100%;
-    padding: 10px;
-    background: #ffffff;
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 1em 0;
-    text-align: center;
-}
-
 td:last-child:before {
     position: absolute;
     top: 0;
