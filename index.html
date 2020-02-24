@@ -58,8 +58,11 @@
                        :class="{'table-dark' : isDark, 'table-light' : !isDark}">
                     <tbody>
                     <tr v-for="m in pageload" :key="m.id" style="cursor: pointer;" @click="selmail = m">
-                        <td class="w-25"><div class="mailIcon">{{ m.sender.substring(0,1) }}</div><b>{{ m.sender }}</b></td>
-                        <td><span class="font-weight-bold">{{ m.title }}</span> <span class="text-secondary">{{ m.message }}</span></td>
+                        <td class="w-25">
+                            <div class="mailIcon" :style="randomBg()">{{ m.sender.substring(0,1) }}</div>
+                            <b>{{ m.sender }}</b></td>
+                        <td><span class="font-weight-bold">{{ m.title }}</span> <span class="text-secondary">{{ m.message }}</span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -665,6 +668,14 @@
                     return;
                 }
                 this.modal.modal('show');
+            }
+        },
+        methods: {
+            randomBg() {
+                return {
+                    backgroundColor: '#' + (Math.random() * 0xFFFFFF << 0).toString(16),
+                    color: '#ffffff'
+                };
             }
         }
     });
