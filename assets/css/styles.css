@@ -43,6 +43,23 @@ td {
     text-overflow: ellipsis;
 }
 
+.mailIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #ffffff;
+    width: 2em;
+    height: 2em;
+    padding: 4px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #ffc107;
+}
+
 @media (max-width: 768px) {
     .newmsg-button {
         right: 0;
