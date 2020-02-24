@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru_RU" class="h-100">
+<html lang="ru_RU" class="mh-100">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -9,43 +9,55 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="h-100">
-<div class="h-100" :class="{'bg-dark' : isDark, 'bg-light' : !isDark}" id="app">
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" :class="{'bg-dark' : isDark, 'bg-primary' : !isDark}">
-        <a class="navbar-brand" href="#">NeoMail</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body class="mh-100">
+<div class="mh-100" :class="{'bg-dark text-white' : isDark, 'bg-light' : !isDark}" id="app">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top" :class="{'bg-dark' : isDark, 'bg-primary' : !isDark}">
+        <div class="container">
+            <a class="navbar-brand" href="#">NeoMail</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Входящие</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Отправленные</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Спам</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Важное</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Корзина</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li>
-                    <div class="custom-control custom-switch text-white">
-                        <input type="checkbox" class="custom-control-input" id="darkThemeSwitch" v-model="isDark">
-                        <label class="custom-control-label" style="user-select: none;" for="darkThemeSwitch">Переключить тему оформления</label>
-                    </div>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Входящие</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Отправленные</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Спам</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Важное</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Корзина</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li>
+                        <div class="custom-control custom-switch text-white">
+                            <input type="checkbox" class="custom-control-input" id="darkThemeSwitch" v-model="isDark">
+                            <label class="custom-control-label" style="user-select: none;" for="darkThemeSwitch">Переключить
+                                тему оформления</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
+
+    <main>
+        <div class="container py-3">
+            <h3>Входящие</h3>
+            <div v-for="m in mail" :key="m.id">
+                <p>{{ m.title }}</p>
+            </div>
+        </div>
+    </main>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -58,14 +70,180 @@
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
+    /*
+    https://www.json-generator.com/
+    [
+  '{{repeat(25)}}',
+  {
+    id: '{{index()}}',
+    title: '{{lorem(7, "words")}}',
+    message: '{{lorem(20)}}',
+    folder: "{{random('inbox', 'sent', 'spam', 'important', 'trash')}}"
+  }
+]
+     */
+    const msgs = [
+        {
+            "id": 0,
+            "title": "culpa cupidatat elit minim excepteur adipisicing ad",
+            "message": "Minim reprehenderit duis ullamco proident eu pariatur aute quis. Quis occaecat nisi eu irure ipsum adipisicing excepteur ad nisi eiusmod aliquip. Duis adipisicing mollit nulla quis labore tempor sit ad. Laboris ut anim nostrud adipisicing elit culpa amet aliquip mollit nulla nostrud nisi deserunt fugiat. Aliqua velit proident culpa eu veniam culpa id enim reprehenderit ut cupidatat. Pariatur excepteur commodo occaecat aliquip incididunt in esse. Ullamco cupidatat tempor eiusmod anim occaecat deserunt consectetur dolore velit consectetur culpa dolor sint amet. Laboris consequat tempor excepteur tempor duis esse tempor irure. Do labore sint adipisicing laborum eiusmod. Minim labore do dolore dolore adipisicing laboris occaecat in minim ea. Anim aliqua excepteur voluptate adipisicing. Fugiat nostrud elit nostrud commodo. Labore eu ex et veniam cillum eiusmod esse est anim eiusmod mollit nulla id. Labore consequat tempor minim eu adipisicing labore labore. Et pariatur est eu occaecat dolore mollit ullamco. Ut est ea esse do tempor reprehenderit ut. Amet consectetur proident ad ullamco aliquip reprehenderit nisi qui laboris ex qui. Consectetur consequat incididunt dolor proident Lorem veniam culpa nisi consequat incididunt. Exercitation mollit proident est enim do duis. Aliquip non reprehenderit anim velit ipsum nulla adipisicing sit ullamco officia velit.",
+            "folder": "inbox"
+        },
+        {
+            "id": 1,
+            "title": "qui consectetur sit ex cupidatat dolore in",
+            "message": "Ex labore ex labore in adipisicing. Dolore elit consequat anim velit laboris aute Lorem occaecat dolor. Et do eu id sunt occaecat ad aute. Ut dolor nisi duis excepteur dolore adipisicing non anim voluptate magna eiusmod ut tempor. Deserunt proident excepteur nostrud adipisicing pariatur cillum consequat ea sit dolore Lorem enim. Mollit cillum commodo qui ullamco. Consectetur reprehenderit cupidatat et enim laboris. Fugiat nisi tempor quis commodo in dolore ad deserunt magna. Ullamco excepteur et cupidatat non in esse aliqua et. Ipsum excepteur officia est consectetur ut adipisicing incididunt elit cupidatat duis nulla culpa. Lorem ipsum sint mollit aliquip. Do irure sunt labore irure. Incididunt exercitation aliquip cupidatat mollit ullamco do officia ea do dolore ad ea eiusmod sint. Voluptate mollit Lorem esse magna enim velit duis dolor veniam. Reprehenderit culpa et occaecat officia consectetur mollit ex qui consequat non occaecat eu. Officia proident laboris adipisicing laboris eiusmod nisi reprehenderit. Ullamco cupidatat proident commodo ad nostrud ullamco aute culpa ut ullamco quis elit. Nisi labore consequat reprehenderit id est culpa cupidatat irure mollit dolore anim sint fugiat ea. Id cupidatat quis reprehenderit reprehenderit enim veniam ipsum enim reprehenderit exercitation ullamco veniam excepteur. Non nisi excepteur aliquip proident laborum non qui laboris.",
+            "folder": "inbox"
+        },
+        {
+            "id": 2,
+            "title": "Lorem eiusmod id ad tempor ullamco nisi",
+            "message": "Fugiat esse veniam sint ad. Eu dolor nostrud incididunt eu exercitation adipisicing id aliqua veniam ex. Nostrud exercitation laborum commodo mollit velit. Aliqua dolore excepteur commodo qui nulla sit id eu adipisicing reprehenderit deserunt. Consequat duis eu dolore commodo dolore sint. Mollit non labore eiusmod velit nostrud adipisicing. Esse occaecat culpa incididunt aute nostrud sunt nostrud dolore culpa sunt Lorem aliquip. Amet veniam Lorem nisi consequat deserunt nisi mollit est quis. Ad id aute aute laborum eu ipsum qui non ex commodo tempor dolore pariatur aute. Elit aliquip voluptate occaecat Lorem cillum consectetur Lorem. Enim minim voluptate consectetur do qui nisi. Esse excepteur anim esse in. Aliquip non proident esse qui eu enim amet. Voluptate in laboris consequat pariatur sit ut dolor aute amet quis Lorem qui. Duis esse occaecat excepteur nostrud ea velit fugiat adipisicing adipisicing adipisicing ad nulla est incididunt. Ea eiusmod eiusmod laborum cillum deserunt consectetur sunt excepteur. Minim dolor cupidatat id minim ex nulla. Qui esse duis et exercitation voluptate. Nostrud Lorem incididunt esse aliqua elit culpa adipisicing. Duis aute veniam culpa ea ullamco ullamco.",
+            "folder": "inbox"
+        },
+        {
+            "id": 3,
+            "title": "amet aute mollit aute velit ut dolor",
+            "message": "Sint dolor reprehenderit adipisicing anim laboris. Fugiat exercitation dolor id anim cillum sunt fugiat eu labore magna dolore enim do qui. Voluptate proident enim cillum quis veniam proident excepteur incididunt cillum ea non. Mollit labore cillum laboris occaecat eu ad anim qui do excepteur consequat fugiat Lorem fugiat. Duis eiusmod magna pariatur cillum proident veniam pariatur nulla nulla est. Eiusmod non voluptate culpa tempor aliqua anim irure voluptate cillum velit adipisicing. Est anim sit consectetur tempor irure proident. Occaecat ullamco ex ullamco proident cillum velit ad eiusmod anim. Duis est consectetur veniam eu pariatur dolor veniam excepteur sit eu. Commodo duis commodo ipsum ut excepteur ea. Voluptate labore non eiusmod dolore culpa excepteur aliqua ullamco pariatur commodo anim. Deserunt ex ea cupidatat dolore esse ad et laborum culpa nostrud. Fugiat et et labore magna voluptate eu mollit minim et sint in irure. Nostrud cupidatat reprehenderit est et eiusmod Lorem id tempor commodo laborum qui do. Laboris cupidatat mollit voluptate cupidatat est ad nulla reprehenderit reprehenderit. Est commodo voluptate exercitation eu pariatur esse consectetur nisi duis labore sunt adipisicing sint. Proident ex officia ipsum ut incididunt qui exercitation ullamco veniam laboris eiusmod sunt aliqua. Sit occaecat ut ut et qui ex incididunt esse tempor elit magna. Magna culpa ipsum excepteur qui esse esse veniam laboris est culpa aute. Occaecat aliqua ut adipisicing commodo dolore exercitation consectetur culpa excepteur reprehenderit.",
+            "folder": "inbox"
+        },
+        {
+            "id": 4,
+            "title": "consectetur quis mollit sunt sunt non esse",
+            "message": "Dolore enim pariatur est amet dolor labore amet duis pariatur adipisicing amet exercitation do laborum. In mollit ullamco pariatur incididunt nisi consequat nulla dolore. Laboris et irure enim laborum sunt. Incididunt nulla ullamco minim occaecat reprehenderit proident id qui amet quis culpa do commodo non. Labore reprehenderit proident id et est tempor ea labore. Lorem pariatur ipsum magna magna aute. Ex nostrud in tempor voluptate enim anim proident minim dolor. Laboris proident irure ex aliquip tempor aliqua voluptate laborum commodo ut qui nostrud. Et consequat esse in ex incididunt. Ea adipisicing enim dolor cillum amet aliquip anim velit aute ipsum ad. Lorem nisi consequat nostrud irure occaecat. Laborum amet minim consectetur mollit tempor fugiat sint tempor ipsum laboris. Officia incididunt exercitation esse dolore aliquip. Magna velit ex proident labore culpa fugiat nulla elit elit excepteur irure ea. Eu ex quis non esse exercitation dolor amet officia quis ad et irure laborum minim. Nisi exercitation proident eu qui veniam irure ex. Sunt sit cupidatat laboris id laborum labore proident do laboris in. Amet sint aliqua labore pariatur adipisicing occaecat. Irure labore duis cillum cillum ipsum irure. Sit et ipsum culpa dolor.",
+            "folder": "important"
+        },
+        {
+            "id": 5,
+            "title": "deserunt ad dolore exercitation veniam culpa minim",
+            "message": "Tempor deserunt dolor qui amet anim nulla eiusmod velit. Dolor aliquip eu laborum eiusmod. Aute proident est pariatur culpa id aliquip. Cupidatat eu nostrud nisi aliqua quis magna anim non. Sit consequat pariatur anim ex eu id dolor id dolore et qui. Voluptate et ipsum adipisicing et proident irure deserunt fugiat deserunt. Mollit irure est id pariatur mollit in est quis. Dolor adipisicing tempor anim ipsum fugiat ipsum ipsum nisi incididunt culpa et ea. Ea non eiusmod magna nostrud occaecat culpa qui occaecat cupidatat. Magna reprehenderit laboris excepteur consectetur Lorem anim deserunt tempor sint commodo. In mollit amet adipisicing elit minim amet proident ipsum aliquip. Laborum labore excepteur magna voluptate aute ullamco ut amet voluptate nisi incididunt. Anim qui qui magna commodo aute. Velit veniam sit enim in veniam irure aliqua sint ad ad. Anim labore culpa cupidatat amet pariatur esse exercitation reprehenderit aliqua consectetur est tempor proident. Ullamco amet ex consectetur consequat exercitation mollit velit enim mollit sunt. Reprehenderit minim qui pariatur aliqua qui sunt sit dolor ullamco ea nisi. Labore irure dolore laborum sint eiusmod ullamco aliquip irure. Id dolor adipisicing sint sit ipsum enim sunt adipisicing cupidatat est. Laboris sint nisi amet exercitation occaecat consectetur fugiat enim dolor labore qui officia.",
+            "folder": "sent"
+        },
+        {
+            "id": 6,
+            "title": "est aliquip dolor proident dolore non et",
+            "message": "Sint quis occaecat id dolor fugiat ad non non adipisicing amet culpa nostrud non et. Proident magna eu tempor do exercitation dolore sit ut veniam dolor veniam. Minim sint et commodo mollit excepteur ipsum laborum eiusmod. Laboris voluptate aliquip consectetur minim laborum et. Irure dolore velit in sit veniam nisi irure deserunt sint incididunt. Lorem minim labore veniam labore velit aliquip nulla. Quis Lorem eu culpa officia excepteur qui et in. Dolor quis quis aute culpa eu amet anim proident cillum laboris incididunt dolor do. Ad voluptate velit laborum mollit duis adipisicing. Lorem labore voluptate labore sunt. Aute consectetur laborum magna cillum voluptate consequat aliqua ipsum ex Lorem aliqua laborum dolore id. Excepteur quis amet eu sint esse aute quis. Do Lorem sit labore velit incididunt consequat. In dolor officia adipisicing labore occaecat do sunt velit occaecat nostrud. Officia mollit consequat dolor incididunt proident cupidatat sint fugiat esse. Laborum Lorem incididunt ea in enim mollit. Nulla ut quis mollit ullamco esse duis irure enim aute magna culpa. Ex esse nulla voluptate proident qui dolore Lorem qui incididunt ut ut officia in enim. Elit ea consequat amet in ex quis excepteur non aute fugiat in magna reprehenderit. Nostrud cillum occaecat in culpa nisi anim.",
+            "folder": "trash"
+        },
+        {
+            "id": 7,
+            "title": "ullamco excepteur ut in non dolor laboris",
+            "message": "In irure tempor Lorem deserunt deserunt eiusmod incididunt. Do proident cillum cillum voluptate ipsum nisi deserunt aute dolore sint sunt aliquip. Nostrud sunt aliquip dolore veniam exercitation fugiat occaecat consectetur excepteur mollit esse occaecat cupidatat enim. Irure minim ipsum ullamco nulla id consectetur amet veniam incididunt deserunt eiusmod aliquip. Adipisicing nulla do pariatur nulla. Sint ex proident irure eiusmod adipisicing reprehenderit. Culpa cillum et aliquip ad labore nulla. Irure id in et deserunt consequat. Et sint et cupidatat minim ullamco aliqua irure labore. Anim anim eu incididunt qui. Consectetur culpa consectetur exercitation eiusmod labore aute et pariatur labore cupidatat velit. Officia in ex laboris irure exercitation reprehenderit culpa ex. Deserunt sunt aute esse incididunt exercitation ipsum pariatur occaecat sit. Anim voluptate et dolor consequat ipsum duis est est labore esse. Reprehenderit pariatur ut deserunt eiusmod voluptate officia est ipsum. Enim ex et laboris nostrud magna sunt et excepteur aute do nostrud ad mollit Lorem. Proident et cupidatat do eiusmod dolor mollit voluptate elit culpa aliqua. Cupidatat in cupidatat magna ad pariatur duis qui. Amet est nisi eiusmod dolore aute anim fugiat enim est aliquip reprehenderit do incididunt cillum. Minim ullamco ullamco dolor ipsum est.",
+            "folder": "spam"
+        },
+        {
+            "id": 8,
+            "title": "anim Lorem incididunt enim aliqua incididunt dolor",
+            "message": "Ullamco minim non aute adipisicing laboris proident aliqua cupidatat quis elit cupidatat est. Laboris deserunt reprehenderit quis aliqua commodo ex cillum tempor. Nisi qui proident non culpa deserunt sit. Enim tempor consequat Lorem aliquip. Ad sint cupidatat proident id eiusmod mollit minim cupidatat exercitation ut qui cupidatat officia. Voluptate ipsum dolor mollit aute occaecat cillum veniam dolore. Qui proident Lorem nisi et commodo ex aute. Velit aute occaecat sint sint labore. Officia dolore dolore anim adipisicing dolor cillum aute irure quis nulla Lorem reprehenderit. Nisi reprehenderit est proident quis velit amet ullamco nisi culpa eu aute ex reprehenderit. Ex labore aliquip adipisicing aliquip laborum aliqua non laborum anim. Do ad adipisicing sit pariatur enim nisi velit ea ea quis labore culpa adipisicing. Adipisicing commodo consequat cupidatat consequat consequat eiusmod Lorem aliqua. Nisi Lorem eu eu dolore mollit laborum nostrud voluptate laborum minim ut proident. Nulla eiusmod labore sint eiusmod ut proident consectetur irure commodo magna. Ullamco do pariatur minim consequat anim id ea laboris adipisicing ea cillum nulla do culpa. Tempor excepteur ipsum reprehenderit duis velit reprehenderit commodo. Excepteur eiusmod officia exercitation sit aliquip velit commodo occaecat occaecat dolor voluptate nisi culpa ut. Fugiat aliquip culpa incididunt elit consectetur quis elit sit ea dolore Lorem esse Lorem irure. Duis sunt elit magna cillum voluptate labore voluptate in dolore.",
+            "folder": "spam"
+        },
+        {
+            "id": 9,
+            "title": "laboris est eu sit duis id proident",
+            "message": "Id anim non cillum esse. Sint aliqua incididunt consectetur cillum exercitation dolor ut. Tempor fugiat sit in qui reprehenderit officia qui. Nisi eu labore fugiat elit commodo dolore cupidatat reprehenderit enim ut irure. Id voluptate cupidatat magna cupidatat excepteur Lorem ullamco esse qui. Pariatur est aliqua elit fugiat minim eiusmod cillum. Duis sunt exercitation mollit laborum commodo sit sunt culpa aliqua qui. Ea officia dolor sit deserunt dolor esse. Eu enim ex tempor velit et eiusmod quis. Consequat proident velit occaecat voluptate labore ipsum qui. Ullamco veniam nostrud minim cillum sit duis id ea. Aliquip ad occaecat veniam ex. Proident occaecat Lorem fugiat Lorem minim. Pariatur exercitation elit officia ex nostrud cupidatat eiusmod. Consequat occaecat cillum consectetur occaecat occaecat adipisicing eu proident cupidatat sit elit ex. Proident commodo aliqua mollit cupidatat non adipisicing sunt enim dolor elit. Ad aliqua deserunt exercitation qui ex excepteur in non duis mollit esse magna laborum sint. Elit voluptate consequat veniam cillum excepteur voluptate. Nostrud velit eu id aute laborum pariatur ipsum excepteur aliqua amet cupidatat sint id. Veniam voluptate Lorem ea adipisicing irure commodo magna elit duis amet sit dolor labore quis.",
+            "folder": "important"
+        },
+        {
+            "id": 10,
+            "title": "consectetur aute velit proident officia consequat aliquip",
+            "message": "Culpa pariatur non non aliquip mollit consequat aute officia ad proident est ullamco. Lorem cillum anim esse aliquip ullamco qui ea cupidatat commodo quis. Proident dolor velit consectetur eu ut. Anim minim ullamco deserunt consequat commodo Lorem mollit do laboris aliquip. Deserunt deserunt et mollit aute in incididunt commodo et exercitation in eiusmod dolor laboris commodo. Est cillum exercitation laboris tempor voluptate. Esse elit nostrud dolore do dolore fugiat ut. Magna aute voluptate cillum aliqua anim mollit in est nisi tempor officia labore elit proident. Laborum laboris officia officia tempor tempor. Non labore nostrud minim aliquip anim incididunt quis. Ullamco incididunt duis deserunt Lorem culpa. Nulla irure elit proident culpa dolore esse dolore. Dolor quis sit irure quis. Duis id exercitation velit deserunt eu laborum magna ullamco et ipsum ex irure id. Sunt excepteur sint anim minim deserunt dolore labore incididunt sit laboris aliquip adipisicing deserunt. Incididunt duis quis voluptate esse consectetur officia irure irure. Aliquip incididunt in quis laboris quis laboris. Esse et excepteur nostrud nostrud cillum est. Duis ut excepteur aute magna elit anim occaecat aliquip voluptate non qui. In laborum officia tempor anim cillum aute duis dolore.",
+            "folder": "inbox"
+        },
+        {
+            "id": 11,
+            "title": "incididunt ullamco esse sunt sint quis pariatur",
+            "message": "Velit aute adipisicing id id esse laborum irure occaecat magna elit cillum. Proident aliquip ea non pariatur do esse enim velit. Sunt magna elit excepteur voluptate deserunt officia pariatur officia fugiat pariatur sit. In cillum ex do deserunt cillum velit. Nisi est voluptate mollit ea. Nisi consectetur ea irure qui velit magna nulla velit. Do magna amet velit dolor fugiat esse eu. Nostrud ut fugiat proident nulla aliqua adipisicing cupidatat ullamco voluptate eiusmod magna eu esse proident. Adipisicing minim velit minim commodo velit cupidatat dolore Lorem laborum mollit velit officia dolore. Ex exercitation dolor exercitation quis eiusmod dolore. Ex culpa duis cupidatat duis sint sit eiusmod ipsum fugiat veniam laborum est est. Fugiat sint qui est sint nulla mollit ad anim et. Elit veniam anim pariatur qui qui officia et mollit et consectetur cupidatat exercitation dolor. Non aliqua anim cupidatat eu ullamco culpa ea ullamco. Laborum sunt elit laboris dolore in. Occaecat duis proident exercitation minim reprehenderit elit sit commodo exercitation incididunt. Sit nisi aliquip est duis nostrud dolore eu ut ullamco officia ea aute. Dolore magna velit magna id ullamco veniam ex ad incididunt anim est labore. Esse exercitation aliqua mollit nulla laboris id id consequat sunt. Esse incididunt sunt elit minim aliquip velit irure nulla culpa tempor.",
+            "folder": "spam"
+        },
+        {
+            "id": 12,
+            "title": "et adipisicing Lorem consequat quis tempor elit",
+            "message": "Dolore consequat excepteur esse adipisicing ullamco magna tempor labore mollit sit culpa nulla quis. Proident proident reprehenderit esse est est commodo consectetur esse minim culpa nostrud eu duis exercitation. Nulla esse id magna sit consequat est ut enim. Id incididunt do aute exercitation consectetur ex veniam sit officia quis commodo id. Duis id elit nulla voluptate veniam dolor reprehenderit laboris enim consequat. Nisi nisi magna sint occaecat sunt sunt labore proident ea laborum deserunt occaecat Lorem. Velit consequat est est ea excepteur quis sint aliqua dolore aliqua velit aliquip. Reprehenderit ad nostrud do dolore mollit cupidatat labore. Ad qui nulla ipsum enim ex. Quis aliqua sint dolor pariatur proident reprehenderit. Irure in Lorem ad qui elit aliqua ut esse duis dolore sit qui. Amet Lorem et quis aute sunt excepteur Lorem incididunt adipisicing irure in aliqua ipsum. Aliquip duis irure sint est nisi voluptate laboris do nostrud consectetur excepteur fugiat. Amet fugiat non amet labore consequat. Occaecat laborum mollit duis Lorem cupidatat duis exercitation officia ad do enim. Sunt exercitation amet minim Lorem labore anim. Pariatur laborum qui occaecat nisi sint nulla nulla sit occaecat anim quis magna anim. Do fugiat qui velit est incididunt id sint cupidatat tempor aliquip. Mollit ipsum cupidatat ipsum aliqua consectetur nisi reprehenderit ut voluptate occaecat in ipsum. Adipisicing irure fugiat minim irure cillum et laboris esse officia tempor dolor eu fugiat duis.",
+            "folder": "inbox"
+        },
+        {
+            "id": 13,
+            "title": "nisi sunt culpa duis eu non laboris",
+            "message": "Dolore in Lorem eiusmod exercitation magna nostrud excepteur sunt aute. Anim incididunt fugiat et labore veniam sit consequat. Consequat dolore ipsum nisi anim et eu. Et ea aliqua pariatur sunt officia mollit duis sunt dolor consequat velit. Aliqua laboris ut labore qui amet anim consectetur dolor. Proident eu ipsum nulla eu duis nostrud nulla tempor amet nisi qui ullamco. Officia minim tempor mollit anim eiusmod ex dolore enim nisi labore fugiat magna cillum. Tempor sit incididunt cupidatat officia non veniam sunt mollit proident. Minim adipisicing anim incididunt nisi officia in. Qui cillum id ea ea ipsum enim enim duis exercitation ullamco nisi id. Lorem sit aute esse qui enim. Ullamco do aliqua ex cillum qui quis labore fugiat commodo. Labore ea pariatur aliqua voluptate cillum excepteur minim velit non cupidatat. Lorem proident culpa elit deserunt. Sit tempor ex fugiat ipsum culpa aliqua fugiat cillum voluptate consequat voluptate. Culpa et commodo esse commodo. Aliqua et amet dolor pariatur cillum amet incididunt labore commodo incididunt ullamco consequat incididunt. Proident in ex aliquip minim laboris Lorem enim duis. Sit est deserunt in eu laboris laborum consequat nostrud incididunt nostrud reprehenderit adipisicing enim ex. Exercitation incididunt incididunt enim ipsum ullamco fugiat aliquip reprehenderit magna.",
+            "folder": "important"
+        },
+        {
+            "id": 14,
+            "title": "dolor officia voluptate cillum ea velit laboris",
+            "message": "Ut mollit non non proident eiusmod consectetur deserunt proident commodo ex tempor elit fugiat. Magna proident aute velit laboris ex exercitation reprehenderit tempor consectetur sunt elit deserunt mollit qui. Reprehenderit deserunt ea duis adipisicing irure dolore excepteur incididunt proident veniam dolor commodo exercitation ex. Fugiat in enim magna non reprehenderit. Eiusmod commodo adipisicing mollit ex aliqua proident excepteur non laborum aute sint duis in. Sit ut adipisicing amet ex aute consequat minim dolor laboris ullamco. Aliquip pariatur mollit labore sit elit elit aliquip sit cupidatat deserunt consectetur pariatur. Enim esse in reprehenderit nisi ullamco ut laboris tempor eiusmod Lorem. Minim veniam minim amet magna ad ex exercitation voluptate fugiat consectetur. Eiusmod pariatur sit duis dolor. Incididunt ipsum laborum et sit. Irure proident aliquip enim aute dolor. Reprehenderit id ipsum sunt quis sint. Aute minim proident dolor nostrud do. Eiusmod cillum enim enim cupidatat non irure. In exercitation veniam enim dolor pariatur duis incididunt labore cillum occaecat. Mollit elit Lorem nostrud excepteur. Nulla eu enim nisi nulla sunt cupidatat sint occaecat eu cillum exercitation ut sit cupidatat. Esse est consequat sint amet laboris id. Dolor mollit fugiat esse consectetur elit incididunt veniam commodo consequat id tempor laboris exercitation elit.",
+            "folder": "important"
+        },
+        {
+            "id": 15,
+            "title": "officia ea elit culpa amet veniam quis",
+            "message": "Cillum labore nisi dolor ex minim reprehenderit est duis ad. Voluptate elit ad labore voluptate occaecat amet deserunt ut veniam est commodo excepteur ex. Ullamco ullamco est proident ex ullamco ea aute eiusmod fugiat dolore ex ut dolor sit. Anim nisi cupidatat ex quis et aute nisi pariatur excepteur aliqua sint. Consectetur et officia occaecat sint qui irure eiusmod sunt minim deserunt laborum minim excepteur. Aliqua ea quis deserunt reprehenderit. Ad pariatur consequat magna id excepteur commodo ad. Id nulla sint non magna ad duis ex voluptate consequat. Ea aute amet anim aliquip ea eu. Duis ex incididunt culpa aliqua ex duis labore dolore. Reprehenderit minim cillum occaecat minim laborum sit Lorem enim magna proident enim ullamco. Eu aliqua duis cupidatat nisi est tempor sunt aliqua pariatur culpa enim nostrud id. Veniam nostrud non ad dolore do qui aliquip. Voluptate nisi incididunt irure sit ea ullamco deserunt voluptate sint irure aute ipsum. Laborum elit consequat dolor ut ipsum veniam qui aliqua labore et veniam adipisicing. Qui minim nostrud ipsum duis irure culpa ipsum laboris sit velit laboris. Nulla quis nostrud exercitation adipisicing cillum culpa dolor proident ipsum aliqua fugiat. Occaecat eiusmod esse consequat officia ad amet. Cupidatat qui esse culpa duis culpa excepteur. Commodo ullamco voluptate dolor officia aliquip aliqua cillum cillum fugiat.",
+            "folder": "trash"
+        },
+        {
+            "id": 16,
+            "title": "incididunt excepteur aute deserunt sit aute reprehenderit",
+            "message": "Eu commodo labore ut ex minim. Consectetur culpa nisi eu minim anim. Nisi et ut cillum exercitation magna id pariatur et irure elit et. Labore sint nostrud occaecat Lorem irure culpa sint ea fugiat deserunt consectetur commodo exercitation veniam. Exercitation aute sunt eu et id Lorem dolor laborum sint consequat. Aliquip elit velit veniam ullamco cillum sint. Proident adipisicing amet deserunt commodo adipisicing excepteur proident. Magna aute consequat exercitation veniam non incididunt exercitation esse aliquip occaecat excepteur ullamco. Consectetur quis incididunt sit do mollit eu dolor sunt. Est nostrud deserunt ex ea et veniam id nisi aliqua cillum veniam nulla veniam. Ex magna dolor aliquip ex ex do cillum quis qui cillum laborum cillum. Fugiat aute eiusmod cupidatat officia excepteur proident do cupidatat mollit commodo sit do ea. Exercitation est minim Lorem et elit ullamco amet veniam eiusmod. Voluptate mollit id eu qui nisi laborum qui. Anim adipisicing duis commodo ipsum culpa ullamco occaecat duis magna labore mollit do esse. Laborum dolor amet cillum esse ullamco duis ad ea exercitation culpa minim. Est nisi magna laboris quis laborum aliquip. Dolore nulla eiusmod non sit. Laborum id Lorem voluptate aliquip elit proident quis sint voluptate aliquip eiusmod nostrud mollit. Ut laboris enim minim enim.",
+            "folder": "trash"
+        },
+        {
+            "id": 17,
+            "title": "qui id id sit elit aliquip aliquip",
+            "message": "Tempor dolore eu consequat incididunt. Culpa proident esse ex dolor incididunt aute et pariatur officia tempor consequat cillum ullamco. Eiusmod fugiat ex aute exercitation dolor dolor officia eiusmod ex ad ex. Sunt aliquip pariatur consectetur est culpa ut proident consequat ipsum do aliquip. Ea exercitation duis do est magna aliquip commodo consectetur est. Ea sunt pariatur fugiat sunt Lorem dolor mollit enim nostrud ipsum in. Veniam duis sint cupidatat ipsum veniam nisi minim laborum adipisicing minim. Ad cupidatat reprehenderit eu esse. Quis magna tempor ipsum aliquip adipisicing voluptate sit deserunt aliqua sunt. Amet nulla eiusmod eiusmod et laborum ullamco non pariatur Lorem aute veniam velit. Veniam et voluptate ea nulla ut amet. Labore nulla Lorem fugiat elit mollit ex voluptate occaecat. Est sint cillum eiusmod culpa ut. Esse occaecat duis ea quis excepteur quis velit aute veniam commodo fugiat. Voluptate occaecat deserunt velit do sint tempor ipsum. Ut dolore in esse Lorem. Pariatur occaecat magna sunt ullamco exercitation esse amet ut qui laborum fugiat et pariatur. Consectetur ea mollit excepteur dolore commodo qui laboris pariatur eu qui. Elit incididunt nisi do aute eu duis culpa irure officia mollit. Lorem duis laboris et nulla Lorem.",
+            "folder": "sent"
+        },
+        {
+            "id": 18,
+            "title": "nisi velit et do elit elit velit",
+            "message": "Et fugiat eu aliquip consectetur. Velit ullamco aliquip consequat irure. Duis consectetur ea est excepteur consectetur in nostrud laboris aliqua magna et incididunt in pariatur. Velit velit qui excepteur nostrud. Consequat tempor dolor officia fugiat amet. Fugiat non qui et quis fugiat consectetur adipisicing sunt. Et fugiat eu dolor laboris aute Lorem. Dolore consequat minim enim cupidatat commodo est sint esse quis nulla. Nostrud pariatur dolor consectetur exercitation excepteur. Consequat non culpa pariatur ut amet anim ut sunt. Occaecat sit ut ut commodo velit. Est laborum incididunt adipisicing anim eiusmod proident proident nulla officia excepteur minim aute. Ullamco nostrud adipisicing aliquip labore exercitation amet est culpa esse elit veniam. Voluptate mollit sunt excepteur nulla veniam deserunt consectetur duis. Qui ad non culpa occaecat dolor. Irure culpa reprehenderit labore tempor adipisicing dolor Lorem aliquip eu cillum voluptate aute. Incididunt ad ex enim mollit. Est in voluptate ad fugiat. Commodo fugiat proident elit sunt laboris aute. Aliquip consequat magna tempor tempor reprehenderit exercitation reprehenderit ea reprehenderit anim Lorem eiusmod consequat.",
+            "folder": "sent"
+        },
+        {
+            "id": 19,
+            "title": "incididunt laborum minim nostrud ut fugiat nostrud",
+            "message": "Deserunt laboris irure excepteur elit ut adipisicing eu laboris anim fugiat occaecat officia dolore non. Magna amet labore dolore nostrud. Labore eiusmod voluptate minim ad proident ea commodo aute ex ex amet. Fugiat reprehenderit ut sunt enim eu proident laborum deserunt in. Exercitation eu quis mollit non enim culpa ea. Deserunt quis proident pariatur sunt sint eiusmod consectetur eu irure eu nulla enim. Eu adipisicing cupidatat labore ullamco commodo duis incididunt duis in veniam. Laboris mollit Lorem eiusmod qui do. Id sit cillum irure cupidatat incididunt cillum exercitation dolor. Reprehenderit minim in pariatur sit exercitation enim ullamco duis. Deserunt officia laborum commodo qui consectetur incididunt. Sint incididunt ex nostrud sit cupidatat adipisicing. Labore veniam ipsum non aliqua culpa eu voluptate consequat id. Lorem nulla deserunt incididunt quis fugiat elit officia ea. Ullamco commodo excepteur labore eu sint mollit aute duis veniam aliqua enim fugiat sunt. Qui nostrud id pariatur nisi eiusmod et eiusmod magna nostrud magna id do officia duis. Aute laboris magna esse incididunt commodo voluptate sunt duis. Laborum ut incididunt est laborum dolor voluptate commodo est nulla culpa id velit aliqua. Ut sunt et nostrud ad do deserunt Lorem aute anim incididunt et proident excepteur. Non enim veniam quis magna irure reprehenderit amet mollit elit elit fugiat.",
+            "folder": "spam"
+        },
+        {
+            "id": 20,
+            "title": "ullamco cupidatat ad voluptate proident consectetur aliqua",
+            "message": "Aliquip exercitation ea pariatur nostrud. Qui nostrud adipisicing aute ullamco consequat excepteur elit incididunt labore sit voluptate veniam duis. Laboris veniam est id ad esse enim ipsum eu ullamco sunt in voluptate veniam ut. Labore dolore incididunt do eiusmod minim esse pariatur ea duis elit culpa nisi. Incididunt ut dolore eiusmod irure velit. Labore cupidatat veniam sit enim minim adipisicing dolore ipsum excepteur sint enim enim cupidatat. Reprehenderit laborum voluptate ex ad nisi anim ad dolore officia nulla commodo in eiusmod irure. Do amet Lorem exercitation consequat pariatur laborum sunt mollit id deserunt excepteur dolor. Sint nulla do amet ex do occaecat aute eiusmod culpa. In ea ullamco dolore sunt sint dolor ullamco irure in occaecat voluptate magna. Incididunt ad quis irure adipisicing. Amet do fugiat tempor magna adipisicing in labore labore ipsum non dolor. Qui ipsum occaecat ad velit elit laboris id duis sit et veniam in. Cillum laboris ex incididunt qui. Reprehenderit pariatur consectetur non mollit ad quis nisi. Culpa ad do sint dolore incididunt id eiusmod consectetur eu. Ullamco ut eu deserunt irure quis occaecat duis ullamco velit id duis proident minim. Irure est voluptate pariatur id excepteur sint ullamco aute sunt dolor ut sit. Aliquip reprehenderit amet ullamco qui eiusmod amet cupidatat. Duis et exercitation deserunt duis excepteur deserunt excepteur velit esse Lorem fugiat non.",
+            "folder": "important"
+        },
+        {
+            "id": 21,
+            "title": "in eu mollit deserunt nostrud et in",
+            "message": "Est esse velit duis id minim veniam sunt eu cupidatat. Nulla et officia fugiat ad id cillum aliquip et mollit ex. Qui fugiat in amet reprehenderit nostrud irure officia sint. Aliqua pariatur non consectetur nulla proident non id anim in. Sit proident Lorem incididunt laborum tempor do non. Elit ut ipsum occaecat et sit labore consectetur consectetur veniam non aliqua eu. Ullamco dolore nisi amet et minim. Laborum sunt Lorem pariatur ipsum reprehenderit nisi cupidatat id fugiat nulla qui. Cillum deserunt anim voluptate cillum consectetur eiusmod incididunt nostrud consequat dolor aliquip mollit officia. Lorem amet cillum culpa ullamco magna sint id quis eu nostrud nisi ea et voluptate. Ad ex quis culpa ad elit incididunt laboris Lorem nulla sunt anim cillum. Sunt nostrud eiusmod irure ullamco deserunt fugiat proident nisi eiusmod anim irure culpa minim exercitation. Do laborum ut irure aute ipsum est. Ipsum aliquip proident mollit voluptate amet in exercitation. Labore Lorem occaecat laboris incididunt commodo dolore. Sunt anim voluptate duis incididunt est deserunt nostrud duis id. Sint ex voluptate nostrud qui minim cillum sint amet deserunt. Anim velit aliqua anim ad amet consequat do ut proident. Reprehenderit duis aute elit enim labore adipisicing enim fugiat exercitation culpa. Ut ullamco ipsum et dolore velit magna amet elit dolore eiusmod cupidatat aute.",
+            "folder": "important"
+        },
+        {
+            "id": 22,
+            "title": "nostrud reprehenderit anim incididunt duis cupidatat duis",
+            "message": "Elit pariatur consequat reprehenderit in deserunt sint. Et mollit nulla esse consequat et sint cupidatat fugiat. Deserunt eu ad est do enim excepteur aliquip sunt labore eiusmod ut eu. Lorem officia non exercitation in adipisicing laboris. Quis nisi enim non irure esse. Esse pariatur ex ex incididunt. Voluptate aliqua dolor sint laboris voluptate ad anim. Amet consequat ea sit duis aliqua dolor aliqua proident. Dolore eu magna officia cupidatat nostrud veniam sunt aliqua reprehenderit laboris Lorem enim amet quis. Nostrud nostrud anim irure irure veniam sint non reprehenderit ipsum eu. Aliqua non dolore ad veniam incididunt in commodo laborum amet. In incididunt voluptate sunt cupidatat tempor qui. Mollit in anim consequat eu dolor minim. Incididunt veniam adipisicing amet eu pariatur nulla Lorem cillum aliqua commodo exercitation. Et proident duis amet id. Fugiat do duis eiusmod anim deserunt et quis amet ea. Fugiat cupidatat Lorem qui cupidatat ad nulla adipisicing qui cillum culpa aute laboris. Pariatur sint quis officia aliqua quis aute deserunt cupidatat voluptate magna labore labore sint culpa. Aliqua laborum ad cillum id do et ullamco magna labore velit. Elit duis ad incididunt est voluptate id.",
+            "folder": "important"
+        },
+        {
+            "id": 23,
+            "title": "est voluptate id non excepteur magna non",
+            "message": "Velit duis irure ullamco non sunt. Est irure minim proident laboris sunt duis velit occaecat. Exercitation laborum ea irure ea. Qui nisi commodo ut esse magna. Minim amet eu adipisicing labore et nisi proident duis commodo cupidatat pariatur. Adipisicing nulla proident pariatur elit mollit ex Lorem magna esse fugiat eu. Ad deserunt amet non pariatur id officia consequat voluptate id cillum deserunt. Sint velit veniam nisi magna commodo ut ut reprehenderit deserunt consectetur proident dolore. Minim laborum dolore deserunt aliquip aute officia veniam nisi in anim tempor occaecat. Sint commodo enim velit occaecat culpa eiusmod culpa minim exercitation do nostrud eu tempor est. Qui quis irure est magna elit aute sunt et incididunt anim laborum Lorem. Anim ullamco voluptate pariatur irure ullamco non pariatur occaecat consectetur velit ad adipisicing ex veniam. Et dolore aliqua elit non veniam nisi ut pariatur laborum cillum. Culpa ex esse fugiat nostrud nostrud exercitation pariatur cupidatat sit. Aliqua velit deserunt anim nisi eu culpa. Ipsum veniam qui fugiat magna sit consequat ut eiusmod. Culpa duis enim quis do reprehenderit fugiat consequat non occaecat velit nostrud magna minim. Exercitation nostrud quis officia occaecat in aliquip duis anim Lorem. Eu culpa qui esse esse velit fugiat aliquip quis ad ut sunt anim et. Ut dolor minim dolore do qui occaecat est nulla nisi ex nostrud esse.",
+            "folder": "trash"
+        },
+        {
+            "id": 24,
+            "title": "ex irure ut ut adipisicing ex enim",
+            "message": "Cillum eiusmod quis consectetur qui pariatur ea velit proident amet anim ipsum voluptate. Id cupidatat commodo ullamco deserunt. Do sunt laborum eu anim aute voluptate ipsum culpa non exercitation officia est. Et enim do consectetur aliquip ex quis ullamco dolore qui proident ipsum ea velit magna. Anim aute sunt mollit esse mollit ea aliqua labore ut fugiat. Ipsum amet ut amet Lorem aliqua sint do labore eiusmod elit laboris. Veniam duis cupidatat pariatur nostrud do enim est. Labore fugiat exercitation voluptate cupidatat amet cillum aute commodo enim excepteur ad veniam. Do deserunt officia est laboris nulla velit excepteur aute. Sunt in in qui commodo in proident consectetur ex laborum culpa irure. Minim adipisicing excepteur do ex officia esse aliqua tempor culpa velit adipisicing esse. Non Lorem aliquip excepteur aliqua non dolore consectetur ad voluptate duis magna velit ipsum fugiat. Dolor ullamco excepteur eu reprehenderit exercitation occaecat nulla officia. Ullamco amet voluptate consectetur dolor id nisi non velit anim non Lorem irure pariatur Lorem. Consectetur dolor excepteur minim Lorem nulla voluptate aute officia exercitation eiusmod. Et incididunt occaecat officia laborum. Id sint fugiat sunt proident labore sint minim culpa minim et commodo amet proident id. Id voluptate aliqua aliquip cillum dolore cupidatat mollit et. Cupidatat ex incididunt eiusmod fugiat est mollit labore in non ex exercitation reprehenderit. Est ad ad est magna fugiat do dolore eu consequat ut minim elit.",
+            "folder": "sent"
+        }
+    ];
     let app = new Vue({
         el: '#app',
         data: {
             isDark: false,
+            mail: null,
         },
         mounted() {
             if (localStorage.getItem('isDark'))
                 this.isDark = localStorage.getItem('isDark') === 'true';
+            this.mail = msgs;
         },
         watch: {
             isDark(val) {
