@@ -56,10 +56,9 @@
                        :class="{'table-dark' : isDark, 'table-light' : !isDark}">
                     <tbody>
                     <tr v-for="m in pageload" :key="m.id" style="cursor: pointer;" @click="selmail = m">
-                        <td style="width: 20%;">
-                            <div class="mailIcon" :style="randomBg()">{{ m.sender.substring(0,1) }}</div>
-                            <b>{{ m.sender }}</b></td>
-                        <td :class="{'vanish-dark' : isDark, 'vanish-light' : !isDark}"><span class="font-weight-bold">{{ m.title }}</span><br><span
+                        <td style="width: 65px;">
+                            <div class="mailIcon" :style="randomBg()">{{ m.sender.substring(0,1) }}</div></td>
+                        <td :class="{'vanish-dark' : isDark, 'vanish-light' : !isDark}"><span class="font-weight-bold">{{ m.sender }}</span><br><span>{{ m.title }}</span><br><span
                                 class="text-secondary">{{ m.message }}</span>
                         </td>
                     </tr>
@@ -70,7 +69,7 @@
 
         <footer class="shadow-lg py-3">
             <div class="container-fluid text-center">Copyright Ivan Petrov (aka LazyTechwork) &copy; 2020. <br><br>
-                <span class="text-secondary">NeoMail (NeoWave Mail) Preview v0.026</span> <br>
+                <span class="text-secondary">NeoMail (NeoWave Mail) Preview v0.027</span> <br>
                 <span class="text-secondary">If you interested in this product, please mail me &mdash; </span><a
                         href="mailto:lazytechwork@gmail.com" class="text-secondary">lazytechwork@gmail.com</a>
             </div>
