@@ -8,17 +8,6 @@
     transition: .25s background-color, color;
 }
 
-.newmsg-button {
-    position: fixed;
-    bottom: 0;
-    right: 50px;
-    padding: 5px 10px;
-    color: #ffffff;
-    cursor: pointer;
-    user-select: none;
-    border-radius: 5px 5px 0 0;
-}
-
 .newmsg-button.bg-dark {
     border: 1px solid #ffffff;
     border-bottom: none;
@@ -42,6 +31,18 @@ td {
     overflow: hidden;
     text-overflow: clip;
     position: relative;
+}
+
+.newmsg-btn {
+    width: 100%;
+    padding: 10px;
+    background: #ffffff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1em 0;
+    text-align: center;
 }
 
 td:last-child:before {
